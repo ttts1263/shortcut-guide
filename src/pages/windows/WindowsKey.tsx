@@ -15,7 +15,7 @@ import WindowsR2 from "../../assets/WindowsImgs/Windows + R2.jpg"
 import WindowsShiftS from "../../assets/WindowsImgs/Windows + Shift +  S.jpg"
 import WindowsShiftS2 from "../../assets/WindowsImgs/Windows + Shift +  S2.jpg"
 
-export function WindowsKey() {
+export function WindowsPage() {
   const navigate = useNavigate()
   return (
     <>

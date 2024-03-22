@@ -1,97 +1,85 @@
 import styled from "@emotion/styled"
 import { useNavigate } from "react-router-dom"
 import EfficiencyBackground from "../../assets/TutorialBackgroundImages/EfficiencyTutorialBackground.jpg"
+import { routes } from "../../routes"
 
 export function HomePageTutorialP2() {
   const navigate = useNavigate()
 
   return (
     <StyledBackgroundDiv className="background">
-      <StyledMainBanner>
-        <StyledMainBannerPagePont
+      <StyledHeaderDiv>
+        <StyledWindowLink
           onClick={() => {
-            navigate("/windows")
+            navigate(routes.windows)
           }}
         >
           윈도우
-        </StyledMainBannerPagePont>
-        <StyledMainBannerPont
+        </StyledWindowLink>
+        <StyledHomeLink
           onClick={() => {
-            navigate("/")
+            navigate(routes.home)
           }}
         >
           단축키 도우미
-        </StyledMainBannerPont>
-      </StyledMainBanner>
+        </StyledHomeLink>
+      </StyledHeaderDiv>
 
-      <StyledPageDescriptionFont>
-        사용자 친화적인
-        <StyledPageDescriptionFontBlueEmphasis>
-          편의성 기능
-        </StyledPageDescriptionFontBlueEmphasis>
-      </StyledPageDescriptionFont>
+      <StyledTitleDiv>
+        <div>사용자 친화적인</div>
+        <span>편의성 기능</span>
+      </StyledTitleDiv>
 
-      <StyledAdditionalExplanation>
+      <StyledDescriptionDiv>
         단축키 학습 도우미는 원하는 단축키들을 빠르게 찾기 위해
         <br />
         페이지마다 키워드가 나뉘어져 있습니다.
         <br />
         전용 키워드 페이지나 페이지의 키워드를 클릭해 단축키들을 효율적으로
         배워보세요!
-      </StyledAdditionalExplanation>
-      <StyledNextButton
-        onClick={() => {
-          navigate("/3")
-        }}
-      >
-        다음
-      </StyledNextButton>
+      </StyledDescriptionDiv>
 
-      <StyledBeforeButton
-        onClick={() => {
-          navigate("/")
-        }}
-      >
-        이전
-      </StyledBeforeButton>
+      <StyledButtonsDiv>
+        <button
+          onClick={() => {
+            navigate(routes.home)
+          }}
+        >
+          이전
+        </button>
+
+        <button
+          onClick={() => {
+            navigate(routes.home3)
+          }}
+        >
+          다음
+        </button>
+      </StyledButtonsDiv>
     </StyledBackgroundDiv>
   )
 }
 
-const StyledNextButton = styled.button`
-  position: Absolute;
-  font-size: 50px;
-  left: 50%;
-  top: 85%;
+const StyledBackgroundDiv = styled.div`
+  &::before {
+    display: block;
+    content: "";
+    background-image: url(${EfficiencyBackground});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 
-  font-size: 40px;
-
-  width: 200px;
-  height: 75px;
-
-  background-color: skyblue;
-  color: white;
-  border: none;
-
-  border-radius: 45px;
+  padding: 200px 50px;
 `
 
-const StyledBeforeButton = styled.button`
-  position: Absolute;
-  font-size: 50px;
-  left: 35%;
-  top: 85%;
-
-  width: 200px;
-  height: 75px;
-
-  background-color: skyblue;
-  color: white;
-  border: none;
-
-  border-radius: 45px;
-`
-const StyledMainBanner = styled.div`
+const StyledHeaderDiv = styled.div`
   position: fixed;
   width: 100%;
   z-index: 10;
@@ -106,55 +94,60 @@ const StyledMainBanner = styled.div`
 
   white-space: nowrap;
 `
-const StyledMainBannerPont = styled.a`
-  border: none;
-  font-family: "Black Han Sans", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 
-  font-size: 35px;
-  color: white;
-`
-
-const StyledMainBannerPagePont = styled.a`
-  position: fixed;
-
+const StyledWindowLink = styled.a`
   border: none;
   font-family: "Black Han Sans", sans-serif;
   font-weight: 100;
   font-style: normal;
-  right: 5%;
   font-size: 30px;
   color: white;
 `
-const StyledBackgroundDiv = styled.div`
-  &::before {
-    display: block;
-    content: "";
-    background-image: url(${EfficiencyBackground});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 100vh;
-  }
-`
-const StyledPageDescriptionFont = styled.div`
-  font-weight: 600;
-  position: fixed;
-  font-size: 45px;
-  left: 10%;
-  top: 30%;
-`
-const StyledPageDescriptionFontBlueEmphasis = styled.div`
-  font-weight: 900;
-  font-size: 66;
-  color: blue;
+
+const StyledHomeLink = styled.a`
+  border: none;
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 35px;
+  color: white;
 `
 
-const StyledAdditionalExplanation = styled.div`
+const StyledTitleDiv = styled.div`
+  margin-bottom: 50px;
   font-weight: 600;
-  position: absolute;
+  font-size: 45px;
+
+  span {
+    font-weight: 900;
+    font-size: 66;
+    color: blue;
+  }
+`
+
+const StyledDescriptionDiv = styled.div`
+  margin-bottom: 50px;
+  font-weight: 600;
   font-size: 30px;
-  left: 10%;
-  top: 60%;
+`
+
+const StyledButtonsDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    bottom: 100px;
+  }
+
+  button {
+    padding: 20px 24px;
+    font-size: 50px;
+    color: white;
+    background-color: skyblue;
+    border: none;
+    border-radius: 45px;
+  }
 `

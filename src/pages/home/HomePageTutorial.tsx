@@ -2,19 +2,20 @@ import styled from "@emotion/styled"
 import { useNavigate } from "react-router-dom"
 import tutorialGuy from "../../assets/TutorialBackgroundImages/TutorialGuy.jpg"
 
-export function HomePageTutorial() {
+export function HomePage() {
   const navigate = useNavigate()
 
   return (
     <StyledBackgroundDiv className="background">
       <StyledMainBanner>
-        <StyledMainBannerPagePont
+        <StyledMainBannerWindowsPagePont
           onClick={() => {
             navigate("/windows")
           }}
         >
           윈도우
-        </StyledMainBannerPagePont>
+        </StyledMainBannerWindowsPagePont>
+
         <StyledMainBannerPont
           onClick={() => {
             navigate("/")
@@ -22,6 +23,14 @@ export function HomePageTutorial() {
         >
           단축키 도우미
         </StyledMainBannerPont>
+
+        <StyledMainBannerWebBrowserPagePont
+          onClick={() => {
+            navigate("/webbrowser")
+          }}
+        >
+          웹 브라우저
+        </StyledMainBannerWebBrowserPagePont>
       </StyledMainBanner>
 
       {/* <StyledTutorialGuyTranslucentBackgroundImg
@@ -76,13 +85,6 @@ const StyledBackgroundDiv = styled.div`
   }
 `
 
-const StyledTutorialGuyTranslucentBackgroundImg = styled.img`
-  height: 100vh;
-  width: 100%;
-  background-color: #000;
-
-  background-size: cover;
-`
 const StyledMainBanner = styled.div`
   position: fixed;
   width: 100%;
@@ -108,7 +110,7 @@ const StyledMainBannerPont = styled.a`
   color: white;
 `
 
-const StyledMainBannerPagePont = styled.a`
+const StyledMainBannerWindowsPagePont = styled.a`
   position: fixed;
 
   border: none;
@@ -120,6 +122,17 @@ const StyledMainBannerPagePont = styled.a`
   color: white;
 `
 
+const StyledMainBannerWebBrowserPagePont = styled.a`
+  position: fixed;
+
+  border: none;
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  right: 11%;
+  font-size: 30px;
+  color: white;
+`
 const StyledSimpleHomepageDescription = styled.p`
   user-select: none;
   animation-duration: 3s;
